@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/kowsika-arumugamm/portfolio-page.git'
+                git 'https://github.com/kowsika-arumugamm/portfolio-page.git'
             }
         }
 
@@ -23,7 +23,8 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                sh 'docker run -d -p 8080:80 --name portfolio-container portfolio-page'
+                // Changed port from 8080 to 5001
+                sh 'docker run -d -p 5001:80 --name portfolio-container portfolio-page'
             }
         }
     }
